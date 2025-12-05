@@ -10,3 +10,13 @@ services:
     ports:
       - 5432:5432
     restart: unless-stopped
+  hermes:
+    build: ./web-api/
+    environment:
+      DB_USER: mnemosyne
+      DB_PASSWORD: S@MPL_P4SSW0RD
+    ports:
+      - 8080:8080
+    depends_on:
+      - mnemosyne
+    restart: unless-stopped
