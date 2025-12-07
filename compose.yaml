@@ -10,7 +10,7 @@ services:
     ports:
       - 5432:5432
     restart: unless-stopped
-  hermes:
+  hephaestus:
     build: ./web-api/
     environment:
       DB_USER: mnemosyne
@@ -19,4 +19,23 @@ services:
       - 8080:8080
     depends_on:
       - mnemosyne
+    restart: unless-stopped
+  apollo:
+    build: ./web/
+    expose:
+      - "4321"
+    environment:
+      API_URL: http://hephaestus:8080
+    depends_on:
+      - hephaestus
+    restart: unless-stopped
+  hermes:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - hephaestus
+      - apollo
     restart: unless-stopped
