@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/silts/")
+@RequestMapping("/silts/")
 public class SiltController {
 
 	private final SiltService siltService;
