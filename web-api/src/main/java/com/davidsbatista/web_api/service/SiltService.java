@@ -30,7 +30,7 @@ public class SiltService {
 		return SiltDTO.from(savedSilt);
 	}
 
-	public Optional<SiltDTO> get(UUID id){
+	public SiltDTO get(UUID id){
 		Silt silt = this.siltRepository.findById(id)
 			.orElseThrow(() -> new RuntimeException("Silt not found with id: " + id));
 		return SiltDTO.from(silt);

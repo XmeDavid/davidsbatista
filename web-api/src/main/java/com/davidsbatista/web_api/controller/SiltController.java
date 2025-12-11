@@ -1,10 +1,10 @@
 package com.davidsbatista.web_api.controller;
 
+import java.util.List;
+
 import com.davidsbatista.web_api.dto.CreateSiltDTO;
 import com.davidsbatista.web_api.dto.SiltDTO;
 import com.davidsbatista.web_api.service.SiltService;
-
-import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +28,7 @@ public class SiltController {
 
 	@GetMapping
 	public List<SiltDTO> getAll(){
-		return this.siltService.
+		return this.siltService.getAll();
 	}
 
 	@PostMapping
