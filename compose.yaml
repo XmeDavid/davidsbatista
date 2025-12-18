@@ -20,6 +20,8 @@ services:
     depends_on:
       - mnemosyne
     restart: unless-stopped
+    networks:
+      - nginx-network
   apollo:
     build: ./web/
     expose:
@@ -29,3 +31,9 @@ services:
     depends_on:
       - hephaestus
     restart: unless-stopped
+    networks:
+      - nginx-network
+
+networks:
+  nginx-network:
+    external: true
